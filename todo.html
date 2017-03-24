@@ -1,0 +1,54 @@
+<!<!DOCTYPE html>
+<html>
+ <head>
+   <title>Angular</title>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script> 
+ </head>
+
+ <body ng-app="toDo" ng-controller="toDoController">
+    <div class="top">
+      <textarea id="textarea" ng-model="textareaValue"></textarea> <br/>
+      <input type="button" class="topbuttons" name="" value="Add to list" ng-click="add()">
+      <input type="button" class="topbuttons" name="" value="Reverse items" ng-click="reverse()">
+      <input type="button" class="topbuttons" name="" value="Search" ng-click="search()">
+    </div>
+
+    <div>
+    	<ul>
+    		<li ng-repeat="(key, obj) in list">
+    		{{obj.name}} <input type="button" name="" value="X" ng-click="delete(key)"> 
+    		</li>
+    	</ul>
+    </div>
+</body>
+
+<script type="text/javascript">
+	var app = angular.module('toDo', []).controller('toDoController', function($scope){
+		$scope.list = {};
+
+		$scope.add = function(){
+			$scope.list[new Date().getTime()] = {
+				name : $scope.textareaValue,
+				date : new Date()
+			}
+		}
+
+		$scope.reverse = function(){
+			console.log('Reverse Fnc');
+		}
+ 
+		$scope.search = function(){
+			console.log('Search Fcn');
+			for(var key in $scope.list){
+				console.log($scope.list[key].name);
+			}
+		}
+
+		$scope.delete = function(key){
+			console.log('deleted');
+			delete $scope.list[key];
+		}
+	})
+
+</script>
+</html>   
