@@ -1,22 +1,25 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
- <head>
-   <title>Angular</title>
-   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script> 
- </head>
+ 	<head>
+   		<title>Angular</title>
+   		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script> 
+		<!-- <script type="text/javascript" src="angular.js"></script>  -->
+ 	</head>
 
- <body ng-app="toDo" ng-controller="toDoController">
+<body ng-app="toDo" ng-controller="toDoController">
     <div class="top">
-      <textarea id="textarea" ng-model="textareaValue"></textarea> <br/>
-      <input type="button" class="topbuttons" name="" value="Add to list" ng-click="add()">
-      <input type="button" class="topbuttons" name="" value="Reverse items" ng-click="reverse()">
-      <input type="button" class="topbuttons" name="" value="Search" ng-click="search()">
+    	<textarea id="textarea" ng-model="textareaValue"></textarea> <br/>
+    	<input type="button" class="topbuttons" name="" value="Add to list" ng-click="add()">
+    	<input type="button" class="topbuttons" name="" value="Reverse items" ng-click="reverse()">
+    	<input type="button" class="topbuttons" name="" value="Search" ng-click="search()">
     </div>
 
-    <div>
-    	<ul>
+    <div class="container">
+    	<ul id="uList">
     		<li ng-repeat="(key, obj) in list">
-    		{{obj.name}} <input type="button" name="" value="X" ng-click="delete(key)"> 
+    			{{obj.name + ' ' + obj.date}}
+    			<input type="button" name="" class="liButton" value="X" ng-click="delete(key)"> 
     		</li>
     	</ul>
     </div>
@@ -24,31 +27,165 @@
 
 <script type="text/javascript">
 	var app = angular.module('toDo', []).controller('toDoController', function($scope){
-		$scope.list = {};
+		$scope.list = getAll() || {};
+		$scope.latestSort = true;
 
 		$scope.add = function(){
-			$scope.list[new Date().getTime()] = {
+			if (!$scope.textareaValue) {
+				alert('Type something first');
+			} else {
+				$scope.list = getAll();
+				$scope.list[new Date().getTime()] = {
 				name : $scope.textareaValue,
-				date : new Date()
+				date : formatDate(new Date())
+				}
+				storeToLocal($scope.list);
 			}
 		}
 
 		$scope.reverse = function(){
-			console.log('Reverse Fnc');
+			var orderedData = {};
+		    console.log('Reverse FnclatestSort= ' + $scope.latestSort);
+		    $scope.list = getAll();
+
+		    Object.keys($scope.list).sort($scope.sortDecimal).forEach(function(key){
+		    	orderedData[key] = $scope.list[key];
+		    })
+
+		    $scope.latestSort = !$scope.latestSort;
+		    $scope.list = orderedData;
+		    storeToLocal($scope.list);
+
+		    delete orderedData;
+
+		    for(var key in $scope.list){
+		    console.log($scope.list[key].name);
+		    }
 		}
  
 		$scope.search = function(){
-			console.log('Search Fcn');
-			for(var key in $scope.list){
-				console.log($scope.list[key].name);
+			if (!$scope.textareaValue) {
+				alert('Type something first');
+			} else {
+				var foundedItems = search($scope.textareaValue, $scope.list);
+
+				if (Object.keys(foundedItems).length > 0){
+	        		var updatedNames = updateList(foundedItems,$scope.list);
+
+	        		console.log('update view, founded ' + Object.keys(foundedItems).length + ' items');
+
+	        		for(var updkey in updatedNames){
+	        			for(var listkey in $scope.list){
+	        				if(updkey == listkey){
+	        					$scope.list[listkey].name = updatedNames[updkey].name;
+	        					console.log('exec');
+	        					break;
+	        				}
+	        			}
+	        		}
+	        	} else {
+	        		alert('Matches not found');
+	        	}
 			}
+			// for(var listkey in $scope.list){
+			// 	console.log($scope.list[listkey].name);
+			// }
 		}
 
 		$scope.delete = function(key){
-			console.log('deleted');
 			delete $scope.list[key];
+			storeToLocal($scope.list);
 		}
+
+		$scope.sortDecimal = function (a,b){
+			if($scope.latestSort){
+				return a < b;
+			} else {
+				return a > b;
+  				}
+		}
+
 	})
+
+	function getAll(){
+		console.log('GetAll called');
+		var list = JSON.parse(window.localStorage.getItem('listitems'));
+		return list;
+	}
+
+	function storeToLocal(list){
+		var temp = JSON.stringify(list);
+		window.localStorage.setItem('listitems', temp);
+	}
+
+	function search(searchval,listitems){
+		var foundedItems = {};
+	  	var pos = 0;
+	  	var foundPos = 0;
+	  	var enumerator = 0;
+
+	  	for(var key in listitems){
+	    	pos = 0;
+	    	while(true){
+	      		foundPos = listitems[key].name.indexOf(searchval, pos);
+	      		if(foundPos == -1){
+	        		break;
+	      		}
+	      		foundedItems[enumerator] = {
+	        	key : key,
+	        	startIndex : foundPos,         // нашли на этой позиции
+	        	length : searchval.length
+	      		}
+	      		enumerator ++;
+	      		pos = foundPos + 1; // продолжить поиск со следующей
+	    	}
+	  	}
+		return foundedItems; 
+  	}
+
+  	function updateList(foundedItems,listitems){
+	   	var updatedValues = {};
+	    console.log('updateList executing');
+
+	    for(var listkey in listitems){
+	    	var countMatches = 0;
+
+	      	var temp = Array.from(listitems[listkey].name);;
+
+	      	for (var foundkey in foundedItems){
+	        	if (listkey == foundedItems[foundkey].key){
+	          		if (countMatches == 0){
+	            		temp.splice(foundedItems[foundkey].startIndex,0,'<span>');
+	            		temp.splice(1+foundedItems[foundkey].startIndex+foundedItems[foundkey].length,0,'</span>');
+	            		countMatches++;
+	          		}
+	          		else {
+	            		temp.splice(foundedItems[foundkey].startIndex+2*countMatches,0,'<span>');
+	            		temp.splice(1+foundedItems[foundkey].startIndex+2*countMatches+foundedItems[foundkey].length,0,'</span>');
+	            		countMatches++;
+	          		}
+	        	} 
+	      	}
+		      	temp = temp.join("");
+		    	updatedValues[listkey] = {
+		    		name : temp
+		    	}
+	    }
+	    return updatedValues;
+    }
+
+	function formatDate(date) {
+	  var dd = date.getDate();
+	  if (dd < 10) dd = '0' + dd;
+
+	  var mm = date.getMonth() + 1;
+	  if (mm < 10) mm = '0' + mm;
+
+	  var yy = date.getFullYear() % 100;
+	  if (yy < 10) yy = '0' + yy;
+
+	  return dd + '.' + mm + '.' + yy;
+	}
 
 </script>
 </html>   
