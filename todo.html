@@ -3,8 +3,8 @@
  	<head>
    		<title>Angular</title>
    		<link rel="stylesheet" type="text/css" href="style.css">
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script> 
-		<!-- <script type="text/javascript" src="angular.js"></script>  -->
+		<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>  -->
+		<script type="text/javascript" src="angular.js"></script> 
  	</head>
 
 <body ng-app="toDo" ng-controller="toDoController">
@@ -17,16 +17,25 @@
 
     <div class="container">
     	<ul id="uList">
-    		<li ng-repeat="(key, obj) in list">
+<!--     		<li ng-repeat="(key, obj) in list">
     			{{obj.name + ' ' + obj.date}}
     			<input type="button" name="" class="liButton" value="X" ng-click="delete(key)"> 
-    		</li>
+    		</li> -->
+    		<li ng-repeat="(key, obj) in list">
+    			<!-- <p ng-bind-html="trustAsHtml(obj.name)">{{obj.name}}</p>{{' ' + obj.date}} -->
+    			<p ng-bind-html="obj.name">{{' ' + obj.date}}</p>
+    			<input type="button" name="" class="liButton" value="X" ng-click="delete(key)"> 
+    			<!-- <p bind-html-with-js="obj.name | trustAsHtml">{{obj.name + ' ' + obj.date}}</p> -->
+    			<!-- <p ng-bind-html="sce.trustAsHtml(obj.name)">{{obj.name + ' ' + obj.date}}</p> -->
+    		</li>    		
     	</ul>
     </div>
 </body>
 
 <script type="text/javascript">
-	var app = angular.module('toDo', []).controller('toDoController', function($scope){
+	// var app = angular.module('toDo', []).controller('toDoController',function($scope){
+	var app = angular.module('toDo', []).controller('toDoController', ['$scope', '$sce', function($scope, $sce){
+		// $scope.sce = $sce;
 		$scope.list = getAll() || {};
 		$scope.latestSort = true;
 
@@ -77,8 +86,15 @@
 	        		for(var updkey in updatedNames){
 	        			for(var listkey in $scope.list){
 	        				if(updkey == listkey){
-	        					$scope.list[listkey].name = updatedNames[updkey].name;
-	        					console.log('exec');
+	        					// $scope.list[listkey].name = $sce.trustAsHtml(updatedNames[updkey].name);
+	        					$scope.list[listkey].name = $sce.trustAsHtml(updatedNames[updkey].name);
+	        					// $scope.list[listkey].name = updatedNames[updkey].name;
+	    // var filter = angular.module('emnApp').
+     //    filter('to_trusted', ['$sce', function($sce){
+     //        return function(text) {
+     //            return $sce.trustAsHtml(text);
+     //        };
+     //    }]);
 	        					break;
 	        				}
 	        			}
@@ -104,8 +120,8 @@
 				return a > b;
   				}
 		}
-
-	})
+	// })
+	}])
 
 	function getAll(){
 		console.log('GetAll called');
