@@ -1,0 +1,156 @@
+*{
+	padding: 0;
+	margin: 0;
+	border: 1px solid green;
+	box-sizing: content-box;
+}
+body{
+	background: #0975e2;
+	height: 100%;
+	width: 1000px;
+	margin: auto;
+	color: #000;
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+}
+.main{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: table;
+}
+.top{
+	display: table-row;
+}
+.header{
+	position: relative;
+	height: 40px;
+	color: #fff;
+	background: #0072bc;
+    max-height: 100%;
+    min-width: 240px;
+    box-sizing: content-box;
+}
+.header-frame{
+	margin: 0 auto;
+    padding-left: 12px;
+    padding-right: 12px;
+    position: relative;
+}
+.search-area{
+	float: right;
+	position: relative;
+	height: 40px;
+	display: block;
+}
+.search-form{
+	float: left;
+	background: #fff;
+	width: 248px;
+	height: 26px;
+	overflow: hidden;
+	margin:7px 12px 0 0;
+}
+.search-form input{
+	float: left;
+	margin: 0;
+	padding: 0 0 0 6px;
+	width: 210px;
+	height: 26px;
+	font-size: 14px;
+	line-height: 26px;
+	color: #000;
+	border: none;
+	background: none;
+	font: 100% "Segoe UI", "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
+    vertical-align: middle;
+}
+.btn-search{
+	float: right;
+	width: 26px;
+	height: 26px;
+	line-height: 26px;
+	font-size: 20px;
+	text-align: center;
+	position: relative;
+	color: #bce5ff;
+}
+.btn-search input:hover{
+	opacity: 1;
+}
+.btn-search input{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url(images/search.png);
+	background-size: contain;
+	opacity: 0.4;
+}
+#nav{
+	float: left;
+    padding: 0;
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+    font-size: 15px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #fff;
+}
+#navlist{
+	margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
+}
+#navlist li{
+	padding: 9px;
+	padding-right: 20px;
+	float: left;
+}
+.articleList{
+}
+.articleList li{
+	position: relative;
+}
+.imgPanel{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding-left: 10px;
+	line-height: 28px;
+}
+.content .left ul{
+	list-style-type: none;
+}
+.img{
+	width: 400px;
+	height: 300px;
+	background-image: url(images/im1.jpg);
+	background-size: cover;
+ 	background-position: center;
+	float: left;
+	display: block;
+}
+.articleContent{
+	padding-top: 5px;
+	padding-left: 5px;
+	width: 350px;
+	height: 300px;
+	float: left;
+	word-wrap: break-word;
+}
+.content{
+	width: 1000px;
+	margin: auto;
+}
+.left{
+	width: 800px;
+	float: left;
+	display: block;
+}
+.right{
+	margin-left: 20px;
+	width: 150px;
+	float: left;
+}
