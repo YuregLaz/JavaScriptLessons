@@ -14,6 +14,9 @@ body{
     font-size: 13px;
     line-height: 18px;
 }
+a{
+	color: #fff;
+}
 .main{
 	position: relative;
 	width: 100%;
@@ -107,10 +110,127 @@ body{
 	padding-right: 20px;
 	float: left;
 }
-.articleList{
+.content{
+	width: 100%;
+    padding: 0 0 24px;
+    background: #e6e7e9;
+    border: 1px solid #e6e7e9;
+    border-top: 0;
+    position: relative;
+    margin: 0 0 0 -1px;
 }
-.articleList li{
+.left{
+	float: left;
 	position: relative;
+	width: 70%;
+}
+.post{
+	height: 302px;
+    background: #fff;
+    border: 1px solid #ccc;
+    margin: 0 -1px 24px -1px;
+    padding: 0 24px 0 0;
+    position: relative;
+    /*z-index: 7;*/
+}
+.post .visual{
+	float: left;
+    width: 400px;
+    height: 300px;
+    position: relative;
+    border-right: 1px solid #e0e0e0;
+    margin: 0 24px 0 0;
+}
+.post .visual .img{
+	display: block;
+	width: 400px;
+	height: 300px;
+	color: #0072bc;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    background-image: url(images/massEffect.jpg);
+	background-size: cover;
+ 	background-position: center;
+}
+.post .v-panel{
+	position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 28px;
+    color: #fff;
+    background: rgba(25, 20, 20, 0.75);
+    padding: 0 0 0 14px;
+}
+.post .v-panel .comments{
+	float: right;
+    width: 56px;
+    font-size: 17px;
+    line-height: 28px;
+    text-align: center;
+    background: #4ebaf6;
+    color: #fff;
+}
+.post .v-panel .date{
+	font-style: normal;
+    float: left;
+    min-width: 64px;
+}
+.post .v-panel .autor{
+	float: left;
+	margin-left: 40px;
+}
+.post .description{
+	overflow: hidden;
+    padding: 15px 0 0;
+    height: 283px;
+    position: relative;
+    font-size: 13px;
+    line-height: 18px;
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
+}
+.post .description .post-title{
+	font-size: 17px;
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+    font-weight: bold;
+    margin: 0 0 5px;
+    min-height: 22px;
+    font-size: 19px;
+    line-height: 20px;
+}
+.post h2 a{
+	color: #000;
+}
+.post .post-content{
+	position: relative;
+	height: 180px;
+	overflow: hidden;
+}
+.post p{
+	text-align: justify;
+	overflow: hidden;
+    position: relative;
+    font-size: 13px;
+    line-height: 18px;
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
+}
+.post .content-panel{
+	position: absolute;
+	width: 250px;
+	bottom: 0;
+	right: 10px;
+}
+.post .btn-read{
+	float: left;
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 17px;
+    line-height: 26px;
+    color: #fff;
+    background: #babdbe;
+    padding: 0 20px 2px;
 }
 .imgPanel{
 	position: absolute;
@@ -120,9 +240,7 @@ body{
 	padding-left: 10px;
 	line-height: 28px;
 }
-.content .left ul{
-	list-style-type: none;
-}
+
 .img{
 	width: 400px;
 	height: 300px;
@@ -140,15 +258,7 @@ body{
 	float: left;
 	word-wrap: break-word;
 }
-.content{
-	width: 1000px;
-	margin: auto;
-}
-.left{
-	width: 800px;
-	float: left;
-	display: block;
-}
+
 .right{
 	margin-left: 20px;
 	width: 150px;
