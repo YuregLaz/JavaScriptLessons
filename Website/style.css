@@ -1,8 +1,9 @@
 *{
 	padding: 0;
 	margin: 0;
-	border: 1px solid green;
+	/*border: 1px solid green;*/
 	box-sizing: content-box;
+	outline: none;
 }
 body{
 	background: #0975e2;
@@ -130,7 +131,7 @@ a{
 	height: 302px;
     background: #fff;
     border: 1px solid #ccc;
-    margin: 0 -1px 24px -1px;
+    margin: 0 0 24px 0;
     padding: 0 24px 0 0;
     position: relative;
     /*z-index: 7;*/
@@ -231,6 +232,7 @@ a{
     font-size: 17px;
     line-height: 26px;
     color: #fff;
+    margin-left: 20px;
     background: #babdbe;
     padding: 0 20px 2px;
 }
@@ -262,4 +264,139 @@ a{
 .condition-list li +li{
     padding: 0 10px 0 0;
     border-left: 1px solid #606061;
+}
+.letRight{
+	float: right;
+	width: 69%;
+}
+.letLeft{
+	float: left;
+}
+@media screen and (max-width: 1000px){
+	body {
+		width: 780px;
+	}
+	.search-form{
+		width: 200px;
+	}
+	.search-form input{
+		width: 160px;
+	}
+	#navlist li{
+		padding-right: 10px;
+	}
+	.post{
+		height: 242px;
+	    margin: 0 0 14px 0;
+	    padding: 0 14px 0 0;
+	}
+	.post .visual{
+	    width: 320px;
+	    height: 240px;
+	    margin: 0 14px 0 0;
+	}
+	.post .visual .img{
+		width: 320px;
+		height: 240px;
+	}
+	.post .description{
+	    padding: 10px 0 0;
+	    height: 210px;
+	    font-size: 12px;
+	    line-height: 16px;
+	}
+	.post .description .post-title{
+		font-size: 15px;
+	    line-height: 18px;
+	}
+	.post .post-content{
+		height: 125px;
+	}
+	.post p{
+	    font-size: 12px;
+	    line-height: 16px;
+	}
+	.post .content-panel{
+		width: 190px;
+	}		
+	.post .btn-read{
+	    font-size: 15px;
+	    line-height: 20px;
+	    margin-left: 14px;
+	    padding: 0 15px 2px;
+	}
+	.aside{
+		width: 220px;
+	}
+	img {
+		width: 100%;
+	}
+}
+@media screen and (max-width: 780px){
+	body {
+		width: 320px;
+	}
+	.search-form{
+		width: 200px;
+	}
+	.search-form input{
+		width: 160px;
+	}
+	.search-area{
+		float: none;
+	}
+	#navlist{
+		display: inline;
+	    float: none;
+	}
+	#navlist li{
+		padding-right: 10px;
+		float: none;
+	}
+	.post{
+		height: 242px;
+	    margin: 0 0 14px 0;
+	    padding: 0 14px 0 0;
+	}
+	.post .visual{
+	    width: 320px;
+	    height: 240px;
+	    margin: 0 14px 0 0;
+	}
+	.post .visual .img{
+		width: 320px;
+		height: 240px;
+	}
+	.post .description{
+	    padding: 10px 0 0;
+	    height: 210px;
+	    font-size: 12px;
+	    line-height: 16px;
+	}
+	.post .description .post-title{
+		font-size: 15px;
+	    line-height: 18px;
+	}
+	.post .post-content{
+		height: 125px;
+	}
+	.post p{
+	    font-size: 12px;
+	    line-height: 16px;
+	}
+	.post .content-panel{
+		width: 190px;
+	}		
+	.post .btn-read{
+	    font-size: 15px;
+	    line-height: 20px;
+	    margin-left: 14px;
+	    padding: 0 15px 2px;
+	}
+	.aside{
+		width: 220px;
+	}
+	img {
+		width: 100%;
+	}
 }

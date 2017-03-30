@@ -29,6 +29,7 @@
 							<li><a href="#">Games</a></li>
 							<li><a href="#">DevDB</a></li>
 							<li><a href="#">Forum</a></li>
+							<li><input type="button" id="reverse" name="" value="Reverse"></li>
 						</ul>	
 					</nav>
 										
@@ -88,7 +89,7 @@
 			<div class="aside">
 				<div class="a-adv1">
 					<a href="http://4pda.ru/special/hi-fi-pair">
-					<img src="images/adv1.jpg" height="300"> 
+					<img src="images/adv1.jpg"> 
 					</a>
 				</div>
 			</div>
@@ -102,4 +103,26 @@
 		</footer>
 	</div>
 </body>
+<script type="text/javascript">
+	var rev = document.getElementById("reverse");
+	rev.addEventListener("click", revClasses);
+	var reverselogic = true;
+	var list = document.getElementById("articleList");
+	var aside = document.getElementsByClassName("aside")[0];
+
+	function revClasses() {
+		if(reverselogic){
+			list.className = "letRight";
+			aside.className = "letLeft";
+			reverselogic = false;
+		}
+		else{
+			list.className = "articleList";
+			aside.className = "aside";
+			reverselogic = true;
+		}
+
+	}
+
+</script>
 </html>
