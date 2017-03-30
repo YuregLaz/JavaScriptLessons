@@ -25,6 +25,7 @@ a{
 }
 .top{
 	display: table-row;
+	background: #0072bc;
 }
 .header{
 	position: relative;
@@ -111,6 +112,7 @@ a{
 	float: left;
 }
 .content{
+	display: table-row;
 	width: 100%;
     padding: 0 0 24px;
     background: #e6e7e9;
@@ -122,7 +124,7 @@ a{
 .left{
 	float: left;
 	position: relative;
-	width: 70%;
+	width: 69%;
 }
 .post{
 	height: 302px;
@@ -232,35 +234,32 @@ a{
     background: #babdbe;
     padding: 0 20px 2px;
 }
-.imgPanel{
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	padding-left: 10px;
-	line-height: 28px;
+.aside{
+	position: relative;
+	width: 300px;
+	float: right;
 }
-
-.img{
-	width: 400px;
-	height: 300px;
-	background-image: url(images/im1.jpg);
-	background-size: cover;
- 	background-position: center;
-	float: left;
-	display: block;
+.footer{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: table-footer-group;
+    background: #e6e7e9;
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, sans-serif;
 }
-.articleContent{
-	padding-top: 5px;
-	padding-left: 5px;
-	width: 350px;
-	height: 300px;
-	float: left;
-	word-wrap: break-word;
+.condition-list {
+    font-size: 12px;
+    line-height: 12px;
+    margin: 0;
+	padding: 24px 20px 48px 20px;
+    list-style: none;
+    overflow: hidden;
 }
-
-.right{
-	margin-left: 20px;
-	width: 150px;
-	float: left;
+.condition-list li {
+    float: left;
+    padding: 0 10px 0 0;
+}
+.condition-list li +li{
+    padding: 0 10px 0 0;
+    border-left: 1px solid #606061;
 }
