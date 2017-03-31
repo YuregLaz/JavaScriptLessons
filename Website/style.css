@@ -335,31 +335,37 @@ a{
 @media screen and (max-width: 780px){
 	body {
 		width: 320px;
+		font-size: 10px;
+    	line-height: 13px;
+	}
+	.search-area{
+		float: none;
 	}
 	.search-form{
+		float: right;
 		width: 200px;
 	}
 	.search-form input{
 		width: 160px;
 	}
-	.search-area{
-		float: none;
-	}
 	#navlist{
-		display: inline;
 	    float: none;
 	}
 	#navlist li{
-		padding-right: 10px;
 		float: none;
 	}
+	.left{
+		float: none;
+		width: 100%;
+	}
 	.post{
-		height: 242px;
+		height: 100%;
 	    margin: 0 0 14px 0;
 	    padding: 0 14px 0 0;
 	}
 	.post .visual{
-	    width: 320px;
+		float: none;
+	    width: 100%;
 	    height: 240px;
 	    margin: 0 14px 0 0;
 	}
@@ -368,33 +374,44 @@ a{
 		height: 240px;
 	}
 	.post .description{
-	    padding: 10px 0 0;
+	    padding: 5px 0 0;
 	    height: 210px;
-	    font-size: 12px;
-	    line-height: 16px;
+	    font-size: 10px;
+	    line-height: 13px;
 	}
 	.post .description .post-title{
-		font-size: 15px;
-	    line-height: 18px;
+		font-size: 13px;
+	    font-size: 15px;
+	    line-height: 17px;
 	}
 	.post .post-content{
 		height: 125px;
 	}
 	.post p{
-	    font-size: 12px;
-	    line-height: 16px;
+	    font-size: 10px;
+	    line-height: 13px;
 	}
 	.post .content-panel{
-		width: 190px;
-	}		
+		width: 100%;
+	}
 	.post .btn-read{
-	    font-size: 15px;
-	    line-height: 20px;
+		float: left;
+	    font-family: "Segoe UI", "Helvetica Neue", Helvetica, sans-serif;
+	    font-size: 13px;
+	    line-height: 17px;
 	    margin-left: 14px;
 	    padding: 0 15px 2px;
 	}
 	.aside{
-		width: 220px;
+		width: 100%;
+		float: none;
+	}
+	.letRight{
+		float: none;
+		width: 100%;
+	}
+	.letLeft{
+		float: none;
 	}
 	img {
 		width: 100%;
