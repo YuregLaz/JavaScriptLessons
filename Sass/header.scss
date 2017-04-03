@@ -1,0 +1,11 @@
+$color: magenta;
+
+.header {
+	color: red;
+	a {
+		color: yellow;
+	}
+	a:visited {
+		color: $color;
+	}
+}

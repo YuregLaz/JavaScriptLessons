@@ -1,0 +1,27 @@
+{
+  "name": "testnpm",
+  "version": "0.0.1",
+  "description": "jslessons",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YuregLaz/JavaScriptLessons.git"
+  },
+  "keywords": [
+    "npm"
+  ],
+  "author": "Yureg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YuregLaz/JavaScriptLessons/issues"
+  },
+  "homepage": "https://github.com/YuregLaz/JavaScriptLessons#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}
